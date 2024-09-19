@@ -18,7 +18,9 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        inputHorizontal = Input.GetAxisRaw("Horizontal");
+        inputVertical = Input.GetAxisRaw("Vertical");
+        if (Mathf.Abs(inputHorizontal) > 0 || Mathf.Abs(inputVertical) > 0)
         {
             anim.SetBool("isWalking", true);
         }
@@ -38,11 +40,6 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetTrigger("Jumping");
         }
-        inputHorizontal = Input.GetAxisRaw("Horizontal");
-        inputVertical = Input.GetAxisRaw("Vertical");
-    }
-    void FixedUpdate()
-    {
         // カメラの方向から、X-Z平面の単位ベクトルを取得
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
 
@@ -50,7 +47,7 @@ public class PlayerMove : MonoBehaviour
         Vector3 moveForward = cameraForward * inputVertical + Camera.main.transform.right * inputHorizontal;
 
         // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
-        rb.velocity = moveForward * moveSpeed + new Vector3(0, rb.velocity.y, 0);
+        transform.position += moveForward * moveSpeed * Time.deltaTime;
 
         // キャラクターの向きを進行方向に
         if (moveForward != Vector3.zero)

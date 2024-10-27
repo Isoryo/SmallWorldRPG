@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody rb;
     [SerializeField] public float moveSpeed = 3f;
     [SerializeField] private Animator anim;
+    float rotateSpeed = 10f;
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +41,11 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetTrigger("Jumping");
         }
+        if (Input.GetMouseButton(0))
+        {
+            anim.SetTrigger("SSAttacking");
+        }
+        
         // カメラの方向から、X-Z平面の単位ベクトルを取得
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
 
@@ -49,10 +55,7 @@ public class PlayerMove : MonoBehaviour
         // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
         transform.position += moveForward * moveSpeed * Time.deltaTime;
 
-        // キャラクターの向きを進行方向に
-        if (moveForward != Vector3.zero)
-        {
-            transform.rotation = Quaternion.LookRotation(moveForward);
-        }
+        //進む方向に滑らかに向く。
+        transform.forward = Vector3.Slerp(transform.forward, moveForward, Time.deltaTime * rotateSpeed);
     }
 }

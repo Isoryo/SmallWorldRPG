@@ -201,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150616878}
-  m_LocalRotation: {x: 0.24066561, y: -0.000000040046764, z: 0.000000009929733, w: 0.9706081}
+  m_LocalRotation: {x: 0.24066561, y: 0.000000040046764, z: -0.000000009929733, w: 0.9706081}
   m_LocalPosition: {x: -5.8378105, y: 2.56547, z: -5.078009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -554,7 +554,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735124262}
-  m_LocalRotation: {x: 0.24066556, y: -0.00000002361829, z: 0.000000005856235, w: 0.9706081}
+  m_LocalRotation: {x: 0.24066556, y: 0.000000023618288, z: -0.0000000058562346, w: 0.9706081}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -733,9 +733,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 2.5, z: -2}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -1092,7 +1092,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1085308873}
-  m_LocalRotation: {x: 0.21276763, y: -0.000000008406202, z: 0.0000000018304809, w: 0.9771028}
+  m_LocalRotation: {x: 0.21276763, y: 0.000000008406201, z: -0.0000000018304805, w: 0.9771028}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1170,7 +1170,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242658164}
-  m_LocalRotation: {x: 0.26854965, y: -0.000000023439425, z: 0.000000006534696, w: 0.9632659}
+  m_LocalRotation: {x: 0.26854965, y: -0.000000023439627, z: 0.0000000065347514, w: 0.9632659}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1430,6 +1430,10 @@ PrefabInstance:
     - target: {fileID: 3833216536111512555, guid: 57a7cee7279e048b1ac17e53462bd749, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3833216536112889291, guid: 57a7cee7279e048b1ac17e53462bd749, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3833216536122232747, guid: 57a7cee7279e048b1ac17e53462bd749, type: 3}
       propertyPath: m_Name

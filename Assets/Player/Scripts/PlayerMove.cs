@@ -45,7 +45,22 @@ public class PlayerMove : MonoBehaviour
         {
             anim.SetTrigger("SSAttacking");
         }
-        
+        if(Input.GetKeyDown(KeyCode.Q))//普通のGetKeyでやると２回作動しちゃう
+        {
+            anim.SetTrigger("SmallDamage");
+        }
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            anim.SetTrigger("BigDamage");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            anim.SetTrigger("Winning");
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            anim.SetTrigger("Losing");
+        }
         // カメラの方向から、X-Z平面の単位ベクトルを取得
         Vector3 cameraForward = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
 

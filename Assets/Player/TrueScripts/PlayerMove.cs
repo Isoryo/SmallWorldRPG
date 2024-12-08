@@ -11,6 +11,17 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private Animator anim;
     float rotateSpeed = 10f;
     // Start is called before the first frame update
+    public HPBar playerHPBar;
+
+    public void OnTriggerEnter(Collider collider)//ColliderオブジェクトのIsTriggerにチェック入れること
+    {
+        if (collider.gameObject.tag == "Enemy")
+        {
+            playerHPBar.Damage(Random.Range(200, 250));
+        }
+        Debug.Log("slider.value : " + playerHPBar.slider.value);
+    }
+   
     void Start()
     {
         rb = GetComponent<Rigidbody>();

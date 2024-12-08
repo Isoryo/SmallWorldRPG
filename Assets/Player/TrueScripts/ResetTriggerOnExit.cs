@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class ResetTriggerOnExit : StateMachineBehaviour
 {
-    public string triggerName;
+    public string[] triggerName;
     // Start is called before the first frame update
     public override void OnStateExit(Animator anim, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        anim.ResetTrigger(triggerName);
+        foreach(string name in triggerName)
+        {
+            anim.ResetTrigger(name);
+        }
     }
 }

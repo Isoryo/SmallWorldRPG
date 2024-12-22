@@ -20,12 +20,10 @@ public class HPBar : MonoBehaviour
         sliderlate.value = 1; //Sliderを満タンにする(後)
         image.color = new Color32(86, 236, 70, 255);
         currentHp = maxHp; //現在のHPを最大HPと同じにする
-        Debug.Log("Start currentHp : " + currentHp);
     }
 
     public void Damage(float receivedDamage)
     {
-        Debug.Log("ReceivedDamage : " + receivedDamage);
         currentHp -= receivedDamage;//今のHPからDamage分を引く
         slider.value = (float)currentHp / maxHp;
     }

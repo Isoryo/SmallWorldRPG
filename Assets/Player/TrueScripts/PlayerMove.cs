@@ -17,9 +17,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (collider.gameObject.tag == "Enemy")
         {
-            playerHPBar.Damage(Random.Range(200, 250));
+            playerHPBar.Damage(Random.Range(2000, 2500));
         }
-        Debug.Log("slider.value : " + playerHPBar.slider.value);
     }
    
     void Start()
@@ -81,7 +80,10 @@ public class PlayerMove : MonoBehaviour
         // 移動方向にスピードを掛ける。ジャンプや落下がある場合は、別途Y軸方向の速度ベクトルを足す。
         transform.position += moveForward * moveSpeed * Time.deltaTime;
 
-        //進む方向に滑らかに向く。
-        transform.forward = Vector3.Slerp(transform.forward, moveForward, Time.deltaTime * rotateSpeed);
+        if(moveForward != Vector3.zero)
+        {
+            //進む方向に滑らかに向く。
+            transform.forward = Vector3.Slerp(transform.forward, moveForward, Time.deltaTime * rotateSpeed);
+        }
     }
 }

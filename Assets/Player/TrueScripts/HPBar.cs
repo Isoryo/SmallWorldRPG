@@ -11,21 +11,23 @@ public class HPBar : MonoBehaviour
     public Slider slider;//Sliderを入れる(前)
     public Slider sliderlate;//Sliderを入れる(後)
     public TextMeshProUGUI textmeshpro;
-    public Image image;//SliderのFillのなかのImageを入れる
+    public Image sliderImage;//SliderのFillのなかのImageを入れる
+    public Image panelImage;//Panelの色の濃さを変える
 
     // Start is called before the first frame update
     void Start()
     {
         slider.value = 1; //Sliderを満タンにする(前)
         sliderlate.value = 1; //Sliderを満タンにする(後)
-        image.color = new Color32(86, 236, 70, 255);
+        sliderImage.color = new Color32(86, 236, 70, 255);
         currentHp = maxHp; //現在のHPを最大HPと同じにする
+        panelImage.color = new Color32(0, 0, 0, 0);
     }
 
     public void Damage(float receivedDamage)
     {
         currentHp -= receivedDamage;//今のHPからDamage分を引く
-        slider.value = (float)currentHp / maxHp;
+        slider.value = currentHp / maxHp;
     }
     // Update is called once per frame
     void Update()
@@ -37,11 +39,17 @@ public class HPBar : MonoBehaviour
         }
         if (slider.value < 0.3f)
         {
-            image.color = new Color32(255, 35, 23, 255);
+            sliderImage.color = new Color32(255, 35, 23, 255);
         }
         else
         {
-            image.color = new Color32(86, 236, 70, 255);
+            sliderImage.color = new Color32(86, 236, 70, 255);
+        }
+        if (currentHp <= 0 && panelImage.color.a < 240f/255f)
+        {
+            Debug.Log(panelImage.color.a);
+            currentHp = 0;
+            panelImage.color += new Color32(0, 0, 0, 1);
         }
     }
 }

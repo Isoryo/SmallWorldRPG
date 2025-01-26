@@ -13,6 +13,7 @@ public class HPBar : MonoBehaviour
     public TextMeshProUGUI textmeshpro;
     public Image sliderImage;//SliderのFillのなかのImageを入れる
     public Image panelImage;//Panelの色の濃さを変える
+    public TextMeshProUGUI gameOverImage;//GameOverの文字の濃さを変える
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class HPBar : MonoBehaviour
         sliderImage.color = new Color32(86, 236, 70, 255);
         currentHp = maxHp; //現在のHPを最大HPと同じにする
         panelImage.color = new Color32(0, 0, 0, 0);
+        gameOverImage.color = new Color(gameOverImage.color.r,gameOverImage.color.g,gameOverImage.color.b,0);
     }
 
     public void Damage(float receivedDamage)
@@ -45,11 +47,11 @@ public class HPBar : MonoBehaviour
         {
             sliderImage.color = new Color32(86, 236, 70, 255);
         }
-        if (currentHp <= 0 && panelImage.color.a < 240f/255f)
+        if (currentHp <= 0 && panelImage.color.a < 240f/255f && gameOverImage.color.a < 1)
         {
-            Debug.Log(panelImage.color.a);
             currentHp = 0;
             panelImage.color += new Color32(0, 0, 0, 1);
+            gameOverImage.color += new Color32(0, 0, 0, 1);
         }
     }
 }

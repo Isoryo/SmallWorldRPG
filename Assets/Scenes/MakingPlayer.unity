@@ -201,7 +201,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 150616878}
-  m_LocalRotation: {x: 0.24066561, y: -0.000000040046764, z: 0.000000009929733, w: 0.9706081}
+  m_LocalRotation: {x: 0.24066561, y: 0.000000040046757, z: -0.000000009929731, w: 0.9706081}
   m_LocalPosition: {x: -5.8378105, y: 2.56547, z: -5.078009}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1167,7 +1167,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 735124262}
-  m_LocalRotation: {x: 0.24066556, y: -0.00000002361829, z: 0.000000005856235, w: 0.9706081}
+  m_LocalRotation: {x: 0.24066556, y: 0.000000023618288, z: -0.0000000058562346, w: 0.9706081}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1494,6 +1494,7 @@ GameObject:
   - component: {fileID: 872569541}
   - component: {fileID: 872569540}
   - component: {fileID: 872569539}
+  - component: {fileID: 872569542}
   m_Layer: 5
   m_Name: RestartButton
   m_TagString: Untagged
@@ -1565,7 +1566,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 872569540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 872569542}
+        m_TargetAssemblyTypeName: Restart, Assembly-CSharp
+        m_MethodName: OnClickRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &872569540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1604,6 +1617,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872569537}
   m_CullTransparentMesh: 1
+--- !u!114 &872569542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872569537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb3dfa692b1df4d6f94cb26c3e287eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &879069152
 GameObject:
   m_ObjectHideFlags: 3
@@ -2401,7 +2426,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1242658164}
-  m_LocalRotation: {x: 0.26854965, y: -0.000000023439627, z: 0.0000000065347514, w: 0.9632659}
+  m_LocalRotation: {x: 0.26854965, y: 0.000000023439627, z: -0.0000000065347514, w: 0.9632659}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10326,3 +10351,4 @@ MonoBehaviour:
   sliderImage: {fileID: 732500385}
   panelImage: {fileID: 2021153058}
   gameOverImage: {fileID: 438635194}
+  restartButton: {fileID: 872569537}

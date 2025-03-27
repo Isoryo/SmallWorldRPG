@@ -14,6 +14,7 @@ public class HPBar : MonoBehaviour
     public Image sliderImage;//SliderのFillのなかのImageを入れる
     public Image panelImage;//Panelの色の濃さを変える
     public TextMeshProUGUI gameOverImage;//GameOverの文字の濃さを変える
+    public GameObject restartButton;//リスタートする
 
     // Start is called before the first frame update
     void Start()
@@ -24,11 +25,17 @@ public class HPBar : MonoBehaviour
         currentHp = maxHp; //現在のHPを最大HPと同じにする
         panelImage.color = new Color32(0, 0, 0, 0);
         gameOverImage.color = new Color(gameOverImage.color.r,gameOverImage.color.g,gameOverImage.color.b,0);
+        StartCoroutine(GameOver());
+        restartButton.SetActive(false);
     }
 
     public void Damage(float receivedDamage)
     {
         currentHp -= receivedDamage;//今のHPからDamage分を引く
+        if (currentHp <= 0)
+        {
+            currentHp = 0;
+        }
         slider.value = currentHp / maxHp;
     }
     // Update is called once per frame
@@ -47,11 +54,17 @@ public class HPBar : MonoBehaviour
         {
             sliderImage.color = new Color32(86, 236, 70, 255);
         }
-        if (currentHp <= 0 && panelImage.color.a < 240f/255f && gameOverImage.color.a < 1)
+    }
+    IEnumerator GameOver()
+    {
+        yield return new WaitUntil(() => currentHp <= 0);
+        while(panelImage.color.a < 240f / 255f && gameOverImage.color.a < 1)
         {
-            currentHp = 0;
             panelImage.color += new Color32(0, 0, 0, 1);
             gameOverImage.color += new Color32(0, 0, 0, 1);
+            yield return null;//結構大事！
         }
+        yield return new WaitForSeconds(1);
+        restartButton.SetActive(true);
     }
 }
